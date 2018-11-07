@@ -282,6 +282,10 @@ Prefab:
       propertyPath: ocean
       value: 
       objectReference: {fileID: 1671068043}
+    - target: {fileID: 1419416446539190, guid: 5980b3603d60e564191e1623b66129cc, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5980b3603d60e564191e1623b66129cc, type: 2}
   m_IsPrefabAsset: 0
@@ -613,7 +617,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   density: 1
-  surfaceHeight: 0
+  waveFunction:
+    renderer: {fileID: 1671068044}
+    speed: 0.29
+    amplitude: 1.36
+    length: 1.46
+    angle: 0
+--- !u!23 &1671068044 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 23489229501411358, guid: 1d63852268fb19544a992f55e3d1a39d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1870336375}
 --- !u!1001 &1870336375
 Prefab:
   m_ObjectHideFlags: 0
@@ -656,7 +670,7 @@ Prefab:
     - target: {fileID: 23489229501411358, guid: 1d63852268fb19544a992f55e3d1a39d,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 64341270603868968, guid: 1d63852268fb19544a992f55e3d1a39d,
         type: 2}

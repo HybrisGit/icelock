@@ -54,7 +54,7 @@ public class SubmergedTrigger : MonoBehaviour
 
     private void FixedUpdate()
     {
-        this.SubmersionRate = -1f * Mathf.Lerp(this.collider.bounds.min.y, this.collider.bounds.max.y, this.ocean.transform.position.y) / this.collider.bounds.size.y;
+        this.SubmersionRate = Mathf.Clamp((this.ocean.waveFunction.SurfaceHeight(this.transform.position) - this.collider.bounds.min.y) / this.collider.bounds.size.y, 0f, 1f);
     }
 
     public void RegisterSubmergedListener(IBinaryStateListener listener)
