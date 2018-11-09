@@ -77,7 +77,7 @@ public class Ocean : MonoBehaviour
                 Vector3 pos = new Vector3(-0.5f + x * 0.01f, 0f, -0.5f + y * 0.01f);
                 pos *= this.transform.localScale.x * 10f;
                 pos.y = this.waveFunction.SurfaceHeight(pos);
-                Gizmos.DrawCube(pos, Vector3.one * 0.5f);
+                //Gizmos.DrawCube(pos, Vector3.one * 0.5f);
             }
         }
     }
