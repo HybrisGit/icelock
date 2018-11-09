@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33188460364976816}
   - component: {fileID: 23489229501411358}
   - component: {fileID: 114974345411603242}
+  - component: {fileID: 114997120111317222}
   m_Layer: 0
   m_Name: Ocean
   m_TagString: Untagged
@@ -49,8 +50,8 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1439203707284284}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -102,3 +103,17 @@ MonoBehaviour:
     amplitude: 0.51
     length: 7.54
     angle: 0
+--- !u!114 &114997120111317222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439203707284284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6a1d91a44735f34a95e5e4cc9b0da38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshFilter: {fileID: 33188460364976816}
+  size: 10
+  vertexDensity: 5
