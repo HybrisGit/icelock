@@ -210,6 +210,10 @@ Prefab:
       propertyPath: m_AngularDrag
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1254213439003858, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c, type: 2}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c, type: 2}
   m_IsPrefabAsset: 0
@@ -257,47 +261,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114204465525192958, guid: 5980b3603d60e564191e1623b66129cc,
-        type: 2}
-      propertyPath: ocean
-      value: 
-      objectReference: {fileID: 1671068043}
-    - target: {fileID: 114583035505135906, guid: 5980b3603d60e564191e1623b66129cc,
-        type: 2}
-      propertyPath: ocean
-      value: 
-      objectReference: {fileID: 1671068043}
-    - target: {fileID: 114098522834688720, guid: 5980b3603d60e564191e1623b66129cc,
-        type: 2}
-      propertyPath: ocean
-      value: 
-      objectReference: {fileID: 1671068043}
-    - target: {fileID: 114489409520746176, guid: 5980b3603d60e564191e1623b66129cc,
-        type: 2}
-      propertyPath: ocean
-      value: 
-      objectReference: {fileID: 1671068043}
-    - target: {fileID: 114418663329625290, guid: 5980b3603d60e564191e1623b66129cc,
-        type: 2}
-      propertyPath: ocean
-      value: 
-      objectReference: {fileID: 1671068043}
-    - target: {fileID: 114431363631497664, guid: 5980b3603d60e564191e1623b66129cc,
-        type: 2}
-      propertyPath: ocean
-      value: 
-      objectReference: {fileID: 1671068043}
-    - target: {fileID: 114877028136304016, guid: 5980b3603d60e564191e1623b66129cc,
-        type: 2}
-      propertyPath: ocean
-      value: 
-      objectReference: {fileID: 1671068043}
-    - target: {fileID: 114209951621738948, guid: 5980b3603d60e564191e1623b66129cc,
-        type: 2}
-      propertyPath: ocean
-      value: 
-      objectReference: {fileID: 1671068043}
-    - target: {fileID: 114874431229544996, guid: 5980b3603d60e564191e1623b66129cc,
+    - target: {fileID: 114236028239892756, guid: 5980b3603d60e564191e1623b66129cc,
         type: 2}
       propertyPath: ocean
       value: 
@@ -307,15 +271,51 @@ Prefab:
       propertyPath: ocean
       value: 
       objectReference: {fileID: 1671068043}
-    - target: {fileID: 114236028239892756, guid: 5980b3603d60e564191e1623b66129cc,
+    - target: {fileID: 114874431229544996, guid: 5980b3603d60e564191e1623b66129cc,
         type: 2}
       propertyPath: ocean
       value: 
       objectReference: {fileID: 1671068043}
-    - target: {fileID: 1419416446539190, guid: 5980b3603d60e564191e1623b66129cc, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 114209951621738948, guid: 5980b3603d60e564191e1623b66129cc,
+        type: 2}
+      propertyPath: ocean
+      value: 
+      objectReference: {fileID: 1671068043}
+    - target: {fileID: 114877028136304016, guid: 5980b3603d60e564191e1623b66129cc,
+        type: 2}
+      propertyPath: ocean
+      value: 
+      objectReference: {fileID: 1671068043}
+    - target: {fileID: 114431363631497664, guid: 5980b3603d60e564191e1623b66129cc,
+        type: 2}
+      propertyPath: ocean
+      value: 
+      objectReference: {fileID: 1671068043}
+    - target: {fileID: 114418663329625290, guid: 5980b3603d60e564191e1623b66129cc,
+        type: 2}
+      propertyPath: ocean
+      value: 
+      objectReference: {fileID: 1671068043}
+    - target: {fileID: 114489409520746176, guid: 5980b3603d60e564191e1623b66129cc,
+        type: 2}
+      propertyPath: ocean
+      value: 
+      objectReference: {fileID: 1671068043}
+    - target: {fileID: 114098522834688720, guid: 5980b3603d60e564191e1623b66129cc,
+        type: 2}
+      propertyPath: ocean
+      value: 
+      objectReference: {fileID: 1671068043}
+    - target: {fileID: 114583035505135906, guid: 5980b3603d60e564191e1623b66129cc,
+        type: 2}
+      propertyPath: ocean
+      value: 
+      objectReference: {fileID: 1671068043}
+    - target: {fileID: 114204465525192958, guid: 5980b3603d60e564191e1623b66129cc,
+        type: 2}
+      propertyPath: ocean
+      value: 
+      objectReference: {fileID: 1671068043}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5980b3603d60e564191e1623b66129cc, type: 2}
   m_IsPrefabAsset: 0
@@ -459,31 +459,6 @@ Prefab:
       propertyPath: ocean
       value: 
       objectReference: {fileID: 1671068043}
-    - target: {fileID: 54023330986298614, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c,
-        type: 2}
-      propertyPath: m_Mass
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114985548348766886, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c,
-        type: 2}
-      propertyPath: volume
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 54023330986298614, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c,
-        type: 2}
-      propertyPath: m_Drag
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 54023330986298614, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c,
-        type: 2}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 54023330986298614, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c,
-        type: 2}
-      propertyPath: m_AngularDrag
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c, type: 2}
   m_IsPrefabAsset: 0
@@ -500,7 +475,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1221257553}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Icebergs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,6 +542,26 @@ Prefab:
       propertyPath: ocean
       value: 
       objectReference: {fileID: 1671068043}
+    - target: {fileID: 1064606040945540, guid: 250f7c140caecbf498bf63aed24a9b82, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937876901241752, guid: 250f7c140caecbf498bf63aed24a9b82, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370773578425442, guid: 250f7c140caecbf498bf63aed24a9b82, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1267332827688530, guid: 250f7c140caecbf498bf63aed24a9b82, type: 2}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1146098249300370, guid: 250f7c140caecbf498bf63aed24a9b82, type: 2}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 250f7c140caecbf498bf63aed24a9b82, type: 2}
   m_IsPrefabAsset: 0
@@ -672,6 +667,10 @@ Prefab:
       propertyPath: m_AngularDrag
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1254213439003858, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c, type: 2}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c, type: 2}
   m_IsPrefabAsset: 0
@@ -724,31 +723,6 @@ Prefab:
     - target: {fileID: 4407294388410806, guid: 1d63852268fb19544a992f55e3d1a39d, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114974345411603242, guid: 1d63852268fb19544a992f55e3d1a39d,
-        type: 2}
-      propertyPath: waveFunction.amplitude
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 114974345411603242, guid: 1d63852268fb19544a992f55e3d1a39d,
-        type: 2}
-      propertyPath: waveFunction.length
-      value: 5.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 114974345411603242, guid: 1d63852268fb19544a992f55e3d1a39d,
-        type: 2}
-      propertyPath: waveFunction.speed
-      value: 2.81
-      objectReference: {fileID: 0}
-    - target: {fileID: 114974345411603242, guid: 1d63852268fb19544a992f55e3d1a39d,
-        type: 2}
-      propertyPath: waveFunction.angle
-      value: 0.77
-      objectReference: {fileID: 0}
-    - target: {fileID: 114997120111317222, guid: 1d63852268fb19544a992f55e3d1a39d,
-        type: 2}
-      propertyPath: vertexDensity
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d63852268fb19544a992f55e3d1a39d, type: 2}

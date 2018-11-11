@@ -13,14 +13,14 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
+  - PlayerCollision
+  - PlayerGrounded
+  - PlayerNearby
   - 
   - 
+  - PlayPlatform
   - 
-  - 
-  - 
-  - 
-  - 
+  - Terrain
   - 
   - 
   - 

@@ -99,10 +99,10 @@ MonoBehaviour:
   density: 1
   waveFunction:
     renderer: {fileID: 23489229501411358}
-    speed: 0.76
-    amplitude: 0.51
-    length: 7.54
-    angle: 0
+    speed: 2.81
+    amplitude: 0.12
+    length: 5.03
+    angle: 0.77
 --- !u!114 &114997120111317222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -116,4 +116,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshFilter: {fileID: 33188460364976816}
   size: 10
-  vertexDensity: 5
+  vertexDensity: 2
