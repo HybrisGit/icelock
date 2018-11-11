@@ -10,7 +10,7 @@
 	SubShader {
 		Tags { "Queue" = "Transparent" "RenderType" = "Transparent" "IgnoreProjector" = "True" }
 		ZWrite Off
-		Blend One DstColor
+		//Blend One DstColor
 		LOD 200
 
 		CGPROGRAM
@@ -36,14 +36,19 @@
 			// put more per-instance properties here
 		UNITY_INSTANCING_BUFFER_END(Props)
 
-		float t(float4 pos)
-		{
-			float3 dir = normalize(_Direction);
-			return dir.x * pos.x + dir.y * pos.z;
-		}
 		void vert(inout appdata_full v)
 		{
-			v.vertex.y += _Amplitude * sin(_Period * t(mul(v.vertex, unity_ObjectToWorld)) + _Speed * _Time.y);
+			float4 worldPos = mul(v.vertex, unity_ObjectToWorld);
+			float3 dir = normalize(_Direction);
+			float t = _Period * (dir.x * worldPos.x + dir.y * worldPos.z) + _Speed * _Time.y;
+			float sint = sin(t);
+			float cost = cos(t);
+			float3 tangent = normalize(float3(dir.x, cost * _Amplitude, dir.y));
+			float3 wavecrest = normalize(float3(dir.y, 0, dir.x));
+
+			v.vertex.y += _Amplitude * sint;
+			v.normal = normalize(cross(tangent, wavecrest));
+			v.normal.y = abs(v.normal.y);
 		}
 
 		void surf (Input IN, inout SurfaceOutput o) {

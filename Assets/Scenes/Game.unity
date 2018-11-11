@@ -200,6 +200,16 @@ Prefab:
       propertyPath: m_Drag
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 54023330986298614, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54023330986298614, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c, type: 2}
   m_IsPrefabAsset: 0
@@ -464,6 +474,16 @@ Prefab:
       propertyPath: m_Drag
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 54023330986298614, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54023330986298614, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c, type: 2}
   m_IsPrefabAsset: 0
@@ -642,6 +662,16 @@ Prefab:
       propertyPath: m_Drag
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 54023330986298614, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54023330986298614, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d03d3fbf03c6fba4c9bf2c6fd75f411c, type: 2}
   m_IsPrefabAsset: 0
@@ -694,6 +724,31 @@ Prefab:
     - target: {fileID: 4407294388410806, guid: 1d63852268fb19544a992f55e3d1a39d, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114974345411603242, guid: 1d63852268fb19544a992f55e3d1a39d,
+        type: 2}
+      propertyPath: waveFunction.amplitude
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114974345411603242, guid: 1d63852268fb19544a992f55e3d1a39d,
+        type: 2}
+      propertyPath: waveFunction.length
+      value: 5.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 114974345411603242, guid: 1d63852268fb19544a992f55e3d1a39d,
+        type: 2}
+      propertyPath: waveFunction.speed
+      value: 2.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 114974345411603242, guid: 1d63852268fb19544a992f55e3d1a39d,
+        type: 2}
+      propertyPath: waveFunction.angle
+      value: 0.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 114997120111317222, guid: 1d63852268fb19544a992f55e3d1a39d,
+        type: 2}
+      propertyPath: vertexDensity
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d63852268fb19544a992f55e3d1a39d, type: 2}

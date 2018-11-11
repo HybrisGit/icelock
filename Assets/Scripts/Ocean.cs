@@ -50,6 +50,10 @@ public class Ocean : MonoBehaviour
         {
             return this.length;
         }
+        public Vector2 GetDirection()
+        {
+            return this.dir;
+        }
         public void SetAngle(float angle)
         {
             this.angle = angle;
@@ -81,6 +85,11 @@ public class Ocean : MonoBehaviour
     //        }
     //    }
     //}
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(this.transform.position, 10f * new Vector3(this.waveFunction.GetDirection().x, 0f, this.waveFunction.GetDirection().y));
+    }
 
     private void Update()
     {

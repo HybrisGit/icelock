@@ -14,6 +14,7 @@ public class GeneratePlaneMesh : MonoBehaviour
         int verticesPerDimension = quadsPerDimension + 1;
         int quadsTotal = quadsPerDimension * quadsPerDimension;
         Vector3[] vertices = new Vector3[verticesPerDimension * verticesPerDimension];
+        Vector2[] uvs = new Vector2[verticesPerDimension * verticesPerDimension];
         int[] triangles = new int[quadsTotal * 6];
         float vertDist = this.size / quadsPerDimension;
 
@@ -22,8 +23,10 @@ public class GeneratePlaneMesh : MonoBehaviour
         {
             for (int j = 0; j < verticesPerDimension; ++j)
             {
-                vertices[i * verticesPerDimension + j] = 
+                vertices[i * verticesPerDimension + j] =
                     new Vector3(i * vertDist - 0.5f * this.size, 0f, j * vertDist - 0.5f * this.size);
+                uvs[i * verticesPerDimension + j] =
+                    new Vector2(j % 2 * 1.0f, i % 2 * 1.0f);
             }
         }
 
@@ -51,7 +54,8 @@ public class GeneratePlaneMesh : MonoBehaviour
         this.meshFilter.mesh = new Mesh()
         {
             vertices = vertices,
-            triangles = triangles
+            triangles = triangles,
+            uv = uvs
         };
     }
 }
