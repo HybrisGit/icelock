@@ -23,7 +23,8 @@ GameObject:
   - component: {fileID: 54873527633910906}
   - component: {fileID: 114439917655972298}
   - component: {fileID: 114784691765240320}
-  m_Layer: 0
+  - component: {fileID: 114516944611114798}
+  m_Layer: 8
   m_Name: Character_Penguin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +42,7 @@ GameObject:
   - component: {fileID: 136776334512523188}
   - component: {fileID: 114963649310345340}
   - component: {fileID: 114302485036542890}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ClimbTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,8 +59,26 @@ GameObject:
   - component: {fileID: 4671377140810336}
   - component: {fileID: 114834119079281426}
   - component: {fileID: 114733784077929550}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SubmergedTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1356679930592386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4818460692863484}
+  - component: {fileID: 114201079280896964}
+  - component: {fileID: 114860972505978834}
+  - component: {fileID: 114332061327917620}
+  m_Layer: 8
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +94,7 @@ GameObject:
   - component: {fileID: 4704755995339304}
   - component: {fileID: 135640612390345690}
   - component: {fileID: 114674514268524010}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundedTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +111,7 @@ GameObject:
   - component: {fileID: 4511257286958498}
   - component: {fileID: 33862850402868372}
   - component: {fileID: 23113002212648942}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,6 +141,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4818460692863484}
   - {fileID: 4511257286958498}
   - {fileID: 4704755995339304}
   - {fileID: 4671377140810336}
@@ -139,7 +159,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4250118020897428}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4671377140810336
 Transform:
@@ -153,7 +173,7 @@ Transform:
   m_Children:
   - {fileID: 4051204587443920}
   m_Father: {fileID: 4250118020897428}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4704755995339304
 Transform:
@@ -166,7 +186,20 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4250118020897428}
-  m_RootOrder: 1
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4818460692863484
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356679930592386}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.287, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4250118020897428}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23113002212648942
 MeshRenderer:
@@ -225,6 +258,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &114201079280896964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356679930592386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e00061a5facac634088dcbd5e1f5ec77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!114 &114302485036542890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,6 +284,20 @@ MonoBehaviour:
   rigidbody: {fileID: 54873527633910906}
   submergedTrigger: {fileID: 114834119079281426}
   climbTrigger: {fileID: 114963649310345340}
+--- !u!114 &114332061327917620
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356679930592386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08b41a0200ba2874e9676eee921b63ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTakenPerSecond: 1
+  submergedTrigger: {fileID: 114834119079281426}
+  health: {fileID: 114201079280896964}
 --- !u!114 &114439917655972298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,6 +320,17 @@ MonoBehaviour:
     force: 5
     drag: 2
   climbSpeed: 1
+--- !u!114 &114516944611114798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1064606040945540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20701e295ebf38419bf7b7427a5405c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114674514268524010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -314,6 +384,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ocean: {fileID: 0}
   collider: {fileID: 136052876429138658}
+--- !u!114 &114860972505978834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356679930592386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15efc6ac90764c4d9239766bc3a5215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarPrefab: {fileID: 1000563353231078, guid: 35f9b8c273b52784eb8268e9e809a1c6,
+    type: 2}
+  healthBarParent: {fileID: 0}
+  health: {fileID: 114201079280896964}
 --- !u!114 &114963649310345340
 MonoBehaviour:
   m_ObjectHideFlags: 1
