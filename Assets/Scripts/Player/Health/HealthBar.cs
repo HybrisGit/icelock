@@ -18,7 +18,7 @@ public class HealthBar : MonoBehaviour, IRateListener
         this.health.RegisterHealthListener(this, true);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         this.healthBar.transform.position = Camera.main.WorldToScreenPoint(this.transform.position);
     }

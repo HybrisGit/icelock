@@ -43,9 +43,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float horizontalAxis = Input.GetAxis("Horizontal");
-        float verticalAxis = Input.GetAxis("Vertical");
-        Vector3 movementDirection = new Vector3(horizontalAxis, 0f, verticalAxis).normalized;
+        float horizontalAxis = Input.GetAxis("P1_HORIZONTAL") + Input.GetAxis("KEYBOARD_HORIZONTAL");
+        float verticalAxis = Input.GetAxis("P1_VERTICAL") + Input.GetAxis("KEYBOARD_VERTICAL");
+
+        Vector3 movementDirection = new Vector3(horizontalAxis, 0f, verticalAxis);
+        float len = movementDirection.magnitude;
+        if (len > 1.0f)
+        {
+            movementDirection /= len;
+        }
 
         this.rigidbody.AddForce(movementDirection * this.movementForce);
     }
