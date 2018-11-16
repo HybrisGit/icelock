@@ -11,10 +11,11 @@
 		Tags { "Queue" = "Transparent" "RenderType" = "Transparent" "IgnoreProjector" = "True" }
 		ZWrite Off
 		//Blend One DstColor
+		Blend SrcAlpha OneMinusSrcAlpha
 		LOD 200
 
 		CGPROGRAM
-		#pragma surface surf BlinnPhong vertex:vert
+		#pragma surface surf BlinnPhong vertex:vert alpha
 
 		// Use shader model 3.0 target, to get nicer looking lighting
 		#pragma target 3.0
