@@ -21,7 +21,7 @@ public class Buoyancy : MonoBehaviour, IBinaryStateListener
 
     protected virtual void FixedUpdate()
     {
-        this.rigidbody.AddForceAtPosition(Vector3.up * this.submergedTrigger.SubmersionRate * this.volume * this.submergedTrigger.ocean.density, this.submergedTrigger.transform.position);
+        this.rigidbody.AddForceAtPosition(Vector3.up * this.submergedTrigger.SubmersionRate * this.volume * Ocean.Instance.density, this.submergedTrigger.transform.position);
     }
 
     public void OnStateChange(object caller, bool active)

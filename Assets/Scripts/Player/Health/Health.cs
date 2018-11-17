@@ -19,7 +19,7 @@ public class Health : MonoBehaviour
                 return;
             }
             this._currentHealth = value;
-            this._alive = this._currentHealth > 0f;
+            this.Alive = this._currentHealth > 0f;
             this.healthListeners.ForEach((listener) => listener.OnRateChange(this, this._currentHealth * this.oneOverMaxHealth));
         }
     }
@@ -49,8 +49,7 @@ public class Health : MonoBehaviour
     private void Awake()
     {
         this.oneOverMaxHealth = 1f / this.maxHealth;
-        this.CurrentHealth = this.maxHealth;
-        this.Alive = true;
+        this.ResetDamage();
     }
 
     public void RegisterStateListener(IBinaryStateListener listener, bool updateImmediately = false)
@@ -76,6 +75,11 @@ public class Health : MonoBehaviour
     public void DeregisterHealthListener(IRateListener listener)
     {
         this.healthListeners.Remove(listener);
+    }
+
+    public void ResetDamage()
+    {
+        this.CurrentHealth = this.maxHealth;
     }
 
     public void TakeDamage(float damage)

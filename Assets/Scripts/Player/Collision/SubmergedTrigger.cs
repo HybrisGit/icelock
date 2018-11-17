@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SubmergedTrigger : MonoBehaviour
 {
-    public Ocean ocean;
     public new Collider collider;
     
     private List<IBinaryStateListener> submergedListeners = new List<IBinaryStateListener>();
@@ -54,7 +53,7 @@ public class SubmergedTrigger : MonoBehaviour
 
     private void FixedUpdate()
     {
-        this.SubmersionRate = Mathf.Clamp((this.ocean.waveFunction.SurfaceHeight(this.transform.position) - this.collider.bounds.min.y) / this.collider.bounds.size.y, 0f, 1f);
+        this.SubmersionRate = Mathf.Clamp((Ocean.Instance.waveFunction.SurfaceHeight(this.transform.position) - this.collider.bounds.min.y) / this.collider.bounds.size.y, 0f, 1f);
     }
 
     public void RegisterSubmergedListener(IBinaryStateListener listener, bool initialState = false)

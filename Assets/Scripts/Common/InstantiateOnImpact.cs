@@ -13,8 +13,7 @@ public class InstantiateOnImpact : MonoBehaviour
             hit += point.point;
         }
         hit /= collision.contacts.Length;
-
-        Debug.Log("Impact at " + hit + ", instantiating " + prefab);
-        GameObject instance = Instantiate(this.prefab, hit, this.transform.rotation);
+        
+        Instantiate(this.prefab, hit, this.transform.rotation);
     }
 }

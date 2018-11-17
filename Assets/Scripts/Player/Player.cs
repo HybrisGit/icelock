@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public PlayerMovement playerMovement;
     public PlayerCollision playerCollision;
     public PlayerAbilityManager playerAbilityManager;
-    public Health health;
+    public PlayerHealth playerHealth;
 
     // variables
     public int playerNumber = 1;

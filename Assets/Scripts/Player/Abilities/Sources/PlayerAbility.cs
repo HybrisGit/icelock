@@ -9,23 +9,23 @@ public abstract class PlayerAbility : MonoBehaviour
 
     public virtual void OnSuccessfulPress()
     {
-        Debug.Log("Successful press " + this.name);
+        //Debug.Log("Successful press " + this.name);
     }
 
     public virtual void OnSuccessfulRelease()
     {
-        Debug.Log("Successful release " + this.name);
+        //Debug.Log("Successful release " + this.name);
     }
 
     protected void StartCooldown()
     {
         this.cooldownStartTime = Time.time;
-        Debug.Log("Cooldown started " + Time.time);
+        //Debug.Log("Cooldown started " + Time.time);
     }
 
     public float RemainingCooldownSeconds()
     {
-        Debug.Log("Remaining cooldown is " + (this.cooldownStartTime + this.cooldownSeconds - Time.time));
+        //Debug.Log("Remaining cooldown is " + (this.cooldownStartTime + this.cooldownSeconds - Time.time));
         return this.cooldownStartTime + this.cooldownSeconds - Time.time;
     }
 }

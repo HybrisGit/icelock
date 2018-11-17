@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
+    public static CameraMovement Instance { get; private set; }
     public List<Transform> trackedObjects;
     public Vector2 zoomRange;
     public Vector2 minBounds;
@@ -14,6 +15,7 @@ public class CameraMovement : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         this.targetPosition = this.transform.position;
     }
 

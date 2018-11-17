@@ -15,10 +15,13 @@ public class PlayerAbilityManager : MonoBehaviour
 
     private void Update()
     {
-        int number = this.player.playerNumber;
-        for (int i = 0; i < this.abilities.Length; ++i)
+        if (this.player.playerHealth.Alive)
         {
-            this.HandleAbilityInput(number, i);
+            int number = this.player.playerNumber;
+            for (int i = 0; i < this.abilities.Length; ++i)
+            {
+                this.HandleAbilityInput(number, i);
+            }
         }
     }
 
@@ -29,15 +32,18 @@ public class PlayerAbilityManager : MonoBehaviour
             return;
         }
         string inputButtonString = string.Format("P{0}_ABILITY_{1}", playerNumber, abilityIndex);
+        string inputKeyString = string.Format("KEYBOARD_ABILITY_{0}", abilityIndex);
         //Debug.Log(string.Format("Ability Input, player {0}, ability {1}, input {2}, ability {3}", playerNumber, abilityIndex, Input.GetButton(inputButtonString), this.abilities[abilityIndex]));
 
-        if (Input.GetButtonDown(inputButtonString) &&
+        if ((Input.GetButtonDown(inputButtonString) ||
+            Input.GetButtonDown(inputButtonString)) &&
             this.abilities[abilityIndex].RemainingCooldownSeconds() <= 0f)
         {
             this.abilities[abilityIndex].OnSuccessfulPress();
         }
 
-        if (Input.GetButtonUp(inputButtonString))
+        if (Input.GetButtonUp(inputButtonString) ||
+            Input.GetButtonUp(inputKeyString))
         {
             this.abilities[abilityIndex].OnSuccessfulRelease();
         }

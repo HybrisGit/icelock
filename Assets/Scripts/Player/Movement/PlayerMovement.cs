@@ -44,28 +44,29 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        int number = this.player.playerNumber;
-        float horizontalAxis = Input.GetAxis(string.Format("P{0}_HORIZONTAL", number)) + Input.GetAxis("KEYBOARD_HORIZONTAL");
-        float verticalAxis = Input.GetAxis(string.Format("P{0}_VERTICAL", number)) + Input.GetAxis("KEYBOARD_VERTICAL");
-
-        Vector3 inputVector = new Vector3(horizontalAxis, 0f, verticalAxis);
-        float inputLength = inputVector.magnitude;
-        if (inputLength > this.rotationDeadzone)
+        if (this.player.playerHealth.Alive)
         {
-            Vector3 inputDir = inputVector / inputLength;
-            float movementLength = (inputLength - this.movementDeadzone) / (1f - this.movementDeadzone);
-            if (movementLength > 0f)
+            int number = this.player.playerNumber;
+            float horizontalAxis = Input.GetAxis(string.Format("P{0}_HORIZONTAL", number)) + Input.GetAxis("KEYBOARD_HORIZONTAL");
+            float verticalAxis = Input.GetAxis(string.Format("P{0}_VERTICAL", number)) + Input.GetAxis("KEYBOARD_VERTICAL");
+
+            Vector3 inputVector = new Vector3(horizontalAxis, 0f, verticalAxis);
+            float inputLength = inputVector.magnitude;
+            if (inputLength > this.rotationDeadzone)
             {
-                this.player.GetComponent<Rigidbody>().AddForce(inputDir * movementLength * this.movementForce);
+                Vector3 inputDir = inputVector / inputLength;
+                float movementLength = (inputLength - this.movementDeadzone) / (1f - this.movementDeadzone);
+                if (movementLength > 0f)
+                {
+                    this.player.GetComponent<Rigidbody>().AddForce(inputDir * movementLength * this.movementForce);
+                }
+
+                float rotationLength = (inputLength - this.rotationDeadzone) / (1f - this.rotationDeadzone);
+                Vector3 dir = Vector3.RotateTowards(this.player.transform.forward, inputDir * rotationLength, this.rotationSpeed * inputLength, 0f);
+
+                this.player.transform.rotation = Quaternion.LookRotation(dir);
             }
-
-            float rotationLength = (inputLength - this.rotationDeadzone) / (1f - this.rotationDeadzone);
-            Vector3 dir = Vector3.RotateTowards(this.player.transform.forward, inputDir * rotationLength, this.rotationSpeed * inputLength, 0f);
-            Debug.DrawRay(this.player.transform.position, dir, Color.red, 0f, false);
-
-            this.player.transform.rotation = Quaternion.LookRotation(dir);
         }
-        
     }
 
     public void SetPositionState(PositionState state)

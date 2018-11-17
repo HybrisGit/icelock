@@ -38,7 +38,8 @@ GameObject:
   - component: {fileID: 54873527633910906}
   - component: {fileID: 114516944611114798}
   - component: {fileID: 114439917655972298}
-  - component: {fileID: 114019104914684656}
+  - component: {fileID: 114419225335456760}
+  - component: {fileID: 114095900228546712}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -435,7 +436,7 @@ MonoBehaviour:
   ability: {fileID: 114704116790267118}
   manager: {fileID: 114583371032592334}
   preferredIndex: 0
---- !u!114 &114019104914684656
+--- !u!114 &114095900228546712
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -443,10 +444,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1064606040945540}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e00061a5facac634088dcbd5e1f5ec77, type: 3}
+  m_Script: {fileID: 11500000, guid: 8dced9ddf804d364d93de88b5bbcacd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
 --- !u!114 &114302485036542890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -474,7 +474,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageTakenPerSecond: 3
   submergedTrigger: {fileID: 114834119079281426}
-  health: {fileID: 114019104914684656}
+  health: {fileID: 114419225335456760}
+--- !u!114 &114419225335456760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1064606040945540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8bd61ab05c36ae4ea6534b66d7d0e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  player: {fileID: 114516944611114798}
 --- !u!114 &114439917655972298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -529,7 +542,7 @@ MonoBehaviour:
   playerMovement: {fileID: 114439917655972298}
   playerCollision: {fileID: 114462947538232708}
   playerAbilityManager: {fileID: 114583371032592334}
-  health: {fileID: 114019104914684656}
+  playerHealth: {fileID: 114419225335456760}
   playerNumber: 1
 --- !u!114 &114583371032592334
 MonoBehaviour:
@@ -597,7 +610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bca3cb99db8694d87cd8d0a91bfcb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ocean: {fileID: 0}
   collider: {fileID: 136092431646998182}
 --- !u!114 &114860972505978834
 MonoBehaviour:
@@ -612,8 +624,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarPrefab: {fileID: 1000563353231078, guid: 35f9b8c273b52784eb8268e9e809a1c6,
     type: 2}
-  healthBarParent: {fileID: 0}
-  health: {fileID: 114019104914684656}
+  health: {fileID: 114419225335456760}
 --- !u!114 &114963649310345340
 MonoBehaviour:
   m_ObjectHideFlags: 1

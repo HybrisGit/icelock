@@ -68,23 +68,15 @@ public class Ocean : MonoBehaviour
         }
     }
     
+    public static Ocean Instance { get; private set; }
     public float density;
     [SerializeField]
     public WaveFunction waveFunction;
 
-    //private void OnDrawGizmos()
-    //{
-    //    for (int x = 0; x < 100; ++x)
-    //    {
-    //        for (int y = 0; y < 100; ++y)
-    //        {
-    //            Vector3 pos = new Vector3(-0.5f + x * 0.01f, 0f, -0.5f + y * 0.01f);
-    //            pos *= this.transform.localScale.x * 10f;
-    //            pos.y = this.waveFunction.SurfaceHeight(pos);
-    //            Gizmos.DrawCube(pos, Vector3.one * 0.5f);
-    //        }
-    //    }
-    //}
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void OnDrawGizmos()
     {

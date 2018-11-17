@@ -22,17 +22,17 @@ public class Explosion : MonoBehaviour
             Health health = hit.GetComponentInParent<Health>();
             if (health != null)
             {
-                float damage = this.damageCurve.Evaluate(distance) * this.maxDamage;
+                float damage = this.damageCurve.Evaluate(relativeDistance) * this.maxDamage;
                 health.TakeDamage(damage);
-                Debug.Log("Dealing " + damage + " damage to " + health);
+                //Debug.Log("Dealing " + damage + " damage to " + health);
             }
 
             Rigidbody rigidbody = hit.GetComponentInParent<Rigidbody>();
             if (rigidbody != null)
             {
-                Vector3 impulse = this.impulseCurve.Evaluate(distance) * this.maxImpulse * (hit.transform.position - this.transform.position).normalized;
+                Vector3 impulse = this.impulseCurve.Evaluate(relativeDistance) * this.maxImpulse * (hit.transform.position - this.transform.position).normalized;
                 rigidbody.AddForceAtPosition(impulse, closestPoint, ForceMode.Impulse);
-                Debug.Log("Applying impulse " + impulse + " to " + rigidbody);
+                //Debug.Log("Applying impulse " + impulse + " to " + rigidbody);
             }
         }
     }

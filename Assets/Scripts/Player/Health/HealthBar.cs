@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour, IRateListener
 {
     [SerializeField] GameObject healthBarPrefab;
-    [SerializeField] Transform healthBarParent;
     [SerializeField] Health health;
 
     private GameObject healthBar;
@@ -13,7 +12,7 @@ public class HealthBar : MonoBehaviour, IRateListener
     
     private void Start()
     {
-        this.healthBar = Instantiate(this.healthBarPrefab, this.healthBarParent);
+        this.healthBar = Instantiate(this.healthBarPrefab, PlayerManager.Instance.healthBarParent);
         this.healthBarFill = this.healthBar.GetComponentsInChildren<Image>()[2];
         this.health.RegisterHealthListener(this, true);
     }
