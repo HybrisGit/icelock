@@ -7,7 +7,7 @@ public class PlayerSelfAttachingAbility : MonoBehaviour
     public PlayerAbilityManager manager;
     public int preferredIndex;
 
-    private void Awake()
+    private void Start()
     {
         this.manager.AddAbility(this.ability, this.preferredIndex);
     }

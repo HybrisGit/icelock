@@ -29,6 +29,7 @@ public class PlayerAbilityManager : MonoBehaviour
             return;
         }
         string inputButtonString = string.Format("P{0}_ABILITY_{1}", playerNumber, abilityIndex);
+        //Debug.Log(string.Format("Ability Input, player {0}, ability {1}, input {2}, ability {3}", playerNumber, abilityIndex, Input.GetButton(inputButtonString), this.abilities[abilityIndex]));
 
         if (Input.GetButtonDown(inputButtonString) &&
             this.abilities[abilityIndex].RemainingCooldownSeconds() <= 0f)

@@ -4,15 +4,19 @@ using System.Collections;
 public class PlayerCastAbility : PlayerAbility
 {
     protected float castStartTime;
+    protected float castEndTime;
 
     public override void OnSuccessfulPress()
     {
+        base.OnSuccessfulPress();
         this.castStartTime = Time.time;
     }
 
     public override void OnSuccessfulRelease()
     {
+        base.OnSuccessfulRelease();
         this.StartCooldown();
+        this.castEndTime = Time.time;
         this.OnCast(this.CastTime());
     }
 
@@ -20,6 +24,6 @@ public class PlayerCastAbility : PlayerAbility
 
     public float CastTime()
     {
-        return Time.time - this.castStartTime;
+        return this.castEndTime - this.castStartTime;
     }
 }

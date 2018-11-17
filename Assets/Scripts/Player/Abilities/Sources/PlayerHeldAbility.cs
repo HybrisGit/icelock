@@ -8,6 +8,7 @@ public class PlayerHeldAbility : PlayerAbility
 
     public override void OnSuccessfulPress()
     {
+        base.OnSuccessfulPress();
         this.enabled = true;
 
         this.StartCooldown();
@@ -16,6 +17,7 @@ public class PlayerHeldAbility : PlayerAbility
 
     public override void OnSuccessfulRelease()
     {
+        base.OnSuccessfulRelease();
         this.enabled = false;
     }
 

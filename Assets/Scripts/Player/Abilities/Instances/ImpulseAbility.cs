@@ -4,6 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(Rigidbody))]
 public class ImpulseAbility : InstantiatedAbility
 {
+    public Vector3 addedDirection;
     public float impulse;
     public float recoilEffect;
     private new Rigidbody rigidbody;
@@ -17,11 +18,13 @@ public class ImpulseAbility : InstantiatedAbility
     {
         base.OnInstantiated(source);
 
-        this.rigidbody.AddForce(this.transform.forward * this.impulse);
+        Vector3 impulse = (this.transform.forward + this.addedDirection).normalized * this.impulse;
+
+        this.rigidbody.AddForce(impulse);
 
         if (this.recoilEffect != 0f)
         {
-            source.abilityManager.player.GetRigidbody().AddForce(this.transform.forward * this.impulse * -1f * this.recoilEffect);
+            source.abilityManager.player.GetRigidbody().AddForce(impulse * -1f * this.recoilEffect);
         }
     }
 }

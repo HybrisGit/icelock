@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     public Player player;
+    public float rotationDeadzone;
+    public float movementDeadzone;
+    public float rotationSpeed;
     public float climbSpeed;
     private PositionState positionState;
     private float movementForce;
@@ -45,19 +48,24 @@ public class PlayerMovement : MonoBehaviour
         float horizontalAxis = Input.GetAxis(string.Format("P{0}_HORIZONTAL", number)) + Input.GetAxis("KEYBOARD_HORIZONTAL");
         float verticalAxis = Input.GetAxis(string.Format("P{0}_VERTICAL", number)) + Input.GetAxis("KEYBOARD_VERTICAL");
 
-        if (horizontalAxis != 0f || verticalAxis != 0f)
+        Vector3 inputVector = new Vector3(horizontalAxis, 0f, verticalAxis);
+        float inputLength = inputVector.magnitude;
+        if (inputLength > this.rotationDeadzone)
         {
-            //Debug.Log(number + string.Format(" Input axes: {0} {1}", horizontalAxis, verticalAxis));
-        }
+            Vector3 inputDir = inputVector / inputLength;
+            float movementLength = (inputLength - this.movementDeadzone) / (1f - this.movementDeadzone);
+            if (movementLength > 0f)
+            {
+                this.player.GetComponent<Rigidbody>().AddForce(inputDir * movementLength * this.movementForce);
+            }
 
-        Vector3 movementDirection = new Vector3(horizontalAxis, 0f, verticalAxis);
-        float len = movementDirection.magnitude;
-        if (len > 1.0f)
-        {
-            movementDirection /= len;
-        }
+            float rotationLength = (inputLength - this.rotationDeadzone) / (1f - this.rotationDeadzone);
+            Vector3 dir = Vector3.RotateTowards(this.player.transform.forward, inputDir * rotationLength, this.rotationSpeed * inputLength, 0f);
+            Debug.DrawRay(this.player.transform.position, dir, Color.red, 0f, false);
 
-        this.player.rigidbody.AddForce(movementDirection * this.movementForce);
+            this.player.transform.rotation = Quaternion.LookRotation(dir);
+        }
+        
     }
 
     public void SetPositionState(PositionState state)
@@ -65,9 +73,9 @@ public class PlayerMovement : MonoBehaviour
         if (this.positionState != state)
         {
             this.positionState = state;
-            Debug.Log("Set state to " + state);
-            this.movementForce = this.stateSettings[state].force * this.player.rigidbody.mass;
-            this.player.rigidbody.drag = this.stateSettings[state].drag;
+            //Debug.Log("Set state to " + state);
+            this.movementForce = this.stateSettings[state].force * this.player.GetComponent<Rigidbody>().mass;
+            this.player.GetComponent<Rigidbody>().drag = this.stateSettings[state].drag;
         }
     }
 
