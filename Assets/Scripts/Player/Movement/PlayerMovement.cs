@@ -17,9 +17,8 @@ public class PlayerMovement : MonoBehaviour
     private Dictionary<PositionState, StateSetting> stateSettings = new Dictionary<PositionState, StateSetting>();
     #endregion
 
-    public int playerNumber;
+    public Player player;
     public float climbSpeed;
-    private new Rigidbody rigidbody;
     private PositionState positionState;
     private float movementForce;
 
@@ -32,8 +31,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        this.rigidbody = this.GetComponent<Rigidbody>();
-
         foreach (StateSetting setting in this.editorStateSettings)
         {
             this.stateSettings.Add(setting.state, setting);
@@ -44,22 +41,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float horizontalAxis = Input.GetAxis(string.Format("P{0}_HORIZONTAL", this.playerNumber)) + Input.GetAxis("KEYBOARD_HORIZONTAL");
-        float verticalAxis = Input.GetAxis(string.Format("P{0}_VERTICAL", this.playerNumber)) + Input.GetAxis("KEYBOARD_VERTICAL");
+        int number = this.player.playerNumber;
+        float horizontalAxis = Input.GetAxis(string.Format("P{0}_HORIZONTAL", number)) + Input.GetAxis("KEYBOARD_HORIZONTAL");
+        float verticalAxis = Input.GetAxis(string.Format("P{0}_VERTICAL", number)) + Input.GetAxis("KEYBOARD_VERTICAL");
 
         if (horizontalAxis != 0f || verticalAxis != 0f)
         {
-            Debug.Log(this.playerNumber + string.Format(" Input axes: {0} {1}", horizontalAxis, verticalAxis));
-        }
-
-        bool ability1 = Input.GetButtonDown(string.Format("P{0}_ABILITY_1", this.playerNumber));
-        bool ability2 = Input.GetButtonDown(string.Format("P{0}_ABILITY_2", this.playerNumber));
-        bool ability3 = Input.GetButtonDown(string.Format("P{0}_ABILITY_3", this.playerNumber));
-        bool ability4 = Input.GetButtonDown(string.Format("P{0}_ABILITY_4", this.playerNumber));
-
-        if (ability1 || ability2 || ability3 || ability4)
-        {
-            Debug.Log(this.playerNumber + " Input ability: " + (ability1 ? "1" : "") + (ability2 ? "2" : "") + (ability3 ? "3" : "") + (ability4 ? "4" : ""));
+            //Debug.Log(number + string.Format(" Input axes: {0} {1}", horizontalAxis, verticalAxis));
         }
 
         Vector3 movementDirection = new Vector3(horizontalAxis, 0f, verticalAxis);
@@ -69,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
             movementDirection /= len;
         }
 
-        this.rigidbody.AddForce(movementDirection * this.movementForce);
+        this.player.rigidbody.AddForce(movementDirection * this.movementForce);
     }
 
     public void SetPositionState(PositionState state)
@@ -78,8 +66,8 @@ public class PlayerMovement : MonoBehaviour
         {
             this.positionState = state;
             Debug.Log("Set state to " + state);
-            this.movementForce = this.stateSettings[state].force * this.rigidbody.mass;
-            this.rigidbody.drag = this.stateSettings[state].drag;
+            this.movementForce = this.stateSettings[state].force * this.player.rigidbody.mass;
+            this.player.rigidbody.drag = this.stateSettings[state].drag;
         }
     }
 

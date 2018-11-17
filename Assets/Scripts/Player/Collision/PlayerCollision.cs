@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour, IBinaryStateListener
 {
-    public PlayerMovement playerMovement;
+    public Player player;
     public TriggerCounter groundedTrigger;
     public SubmergedTrigger submergedTrigger;
+    private PlayerMovement playerMovement;
 
     private bool isGrounded = false;
     private bool isSubmerged = false;
+
+    private void Awake()
+    {
+        this.playerMovement = this.player.playerMovement;
+    }
 
     void Start()
     {
