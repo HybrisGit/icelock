@@ -7,7 +7,8 @@ public class PlayerManager : MonoBehaviour
 
     // references
     [SerializeField] Player playerPrefab;
-    public Transform healthBarParent;
+    [SerializeField] PlayerUI playerUIPrefab;
+    public Transform uiParent;
 
     // variables
     public int maxPlayers = 4;
@@ -39,6 +40,8 @@ public class PlayerManager : MonoBehaviour
         for (int i = 0; i < this.players.Length; ++i)
         {
             this.players[i] = Instantiate(this.playerPrefab, this.transform);
+            PlayerUI playerUI = Instantiate(this.playerUIPrefab, this.uiParent);
+            playerUI.SetPlayer(this.players[i]);
             this.players[i].playerNumber = i;
         }
         this.RespawnPlayers();

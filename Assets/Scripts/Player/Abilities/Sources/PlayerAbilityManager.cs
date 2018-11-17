@@ -7,6 +7,7 @@ public class PlayerAbilityManager : MonoBehaviour
     public Player player;
     [SerializeField] int maxAbilities = 4;
     private PlayerAbility[] abilities;
+    private List<IEventListener> abilityChangeListeners = new List<IEventListener>();
 
     private void Awake()
     {
@@ -33,17 +34,18 @@ public class PlayerAbilityManager : MonoBehaviour
         }
         string inputButtonString = string.Format("P{0}_ABILITY_{1}", playerNumber, abilityIndex);
         string inputKeyString = string.Format("KEYBOARD_ABILITY_{0}", abilityIndex);
-        //Debug.Log(string.Format("Ability Input, player {0}, ability {1}, input {2}, ability {3}", playerNumber, abilityIndex, Input.GetButton(inputButtonString), this.abilities[abilityIndex]));
 
         if ((Input.GetButtonDown(inputButtonString) ||
-            Input.GetButtonDown(inputButtonString)) &&
-            this.abilities[abilityIndex].RemainingCooldownSeconds() <= 0f)
+            Input.GetButtonDown(inputKeyString)) &&
+            !this.abilities[abilityIndex].Pressed &&
+            this.abilities[abilityIndex].OffCooldown())
         {
             this.abilities[abilityIndex].OnSuccessfulPress();
         }
 
-        if (Input.GetButtonUp(inputButtonString) ||
-            Input.GetButtonUp(inputKeyString))
+        if ((Input.GetButtonUp(inputButtonString) ||
+            Input.GetButtonUp(inputKeyString)) &&
+            this.abilities[abilityIndex].Pressed)
         {
             this.abilities[abilityIndex].OnSuccessfulRelease();
         }
@@ -58,9 +60,37 @@ public class PlayerAbilityManager : MonoBehaviour
             {
                 this.abilities[currentIndex] = ability;
                 ability.abilityManager = this;
+                this.abilityChangeListeners.ForEach((listener) => listener.OnEvent());
                 return true;
             }
         }
         return false;
+    }
+
+    public List<PlayerAbility> GetAbilities()
+    {
+        List<PlayerAbility> abilities = new List<PlayerAbility>();
+        for (int i = 0; i < this.abilities.Length; ++i)
+        {
+            if (this.abilities[i] != null)
+            {
+                abilities.Add(this.abilities[i]);
+            }
+        }
+        return abilities;
+    }
+
+    public void RegisterAbilityListener(IEventListener listener, bool updateImmediately = true)
+    {
+        this.abilityChangeListeners.Add(listener);
+        if (updateImmediately)
+        {
+            listener.OnEvent();
+        }
+    }
+
+    public void DeregisterAbilityListener(IEventListener listener)
+    {
+        this.abilityChangeListeners.Remove(listener);
     }
 }

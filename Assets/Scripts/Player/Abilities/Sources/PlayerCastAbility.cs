@@ -5,6 +5,7 @@ public class PlayerCastAbility : PlayerAbility
 {
     protected float castStartTime;
     protected float castEndTime;
+    protected bool casting = false;
 
     public override void OnSuccessfulPress()
     {

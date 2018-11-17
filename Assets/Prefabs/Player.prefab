@@ -124,7 +124,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4818460692863484}
-  - component: {fileID: 114860972505978834}
   - component: {fileID: 114332061327917620}
   m_Layer: 8
   m_Name: Health
@@ -204,7 +203,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1064606040945540}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.44341946, y: 8.028282, z: 3.5742626}
+  m_LocalPosition: {x: -0.44341946, y: 1.0982823, z: 8.334263}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4928222671768834}
@@ -611,20 +610,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 136092431646998182}
---- !u!114 &114860972505978834
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1356679930592386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e15efc6ac90764c4d9239766bc3a5215, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthBarPrefab: {fileID: 1000563353231078, guid: 35f9b8c273b52784eb8268e9e809a1c6,
-    type: 2}
-  health: {fileID: 114419225335456760}
 --- !u!114 &114963649310345340
 MonoBehaviour:
   m_ObjectHideFlags: 1

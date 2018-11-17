@@ -23,7 +23,7 @@ public class PlayerHeldAbility : PlayerAbility
 
     protected virtual void Update()
     {
-        if (this.RemainingCooldownSeconds() < 0f)
+        if (this.OffCooldown())
         {
             this.OnSuccessfulRelease();
         }
