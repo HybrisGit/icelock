@@ -13,7 +13,7 @@ public class OffsetOnCast : MonoBehaviour, IInstantiateAbilityListener
         this.playerCastInstantiateAbility.RegisterInstantiateAbilityListener(this);
     }
 
-    public void OnInstantiateAbility(InstantiatedAbility instantiatedAbility, float castTime)
+    public void OnInstantiateAbility(InstantiatedAbility instantiatedAbility)
     {
         instantiatedAbility.transform.position += this.transform.right * this.offset.x;
         instantiatedAbility.transform.position += this.transform.up * this.offset.y;

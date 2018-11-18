@@ -46,15 +46,20 @@ public class PlayerUI : MonoBehaviour, IRateListener, IEventListener
 
     public void OnEvent()
     {
-        List<PlayerAbility> abilities = this.player.playerAbilityManager.GetAbilities();
-        for (int i = 0; i < this.abilityCooldowns.Count && i < abilities.Count; ++i)
+        List<PlayerAbility> playerAbilities = this.player.playerAbilityManager.GetAbilities();
+        for (int i = 0; i < this.abilityCooldowns.Count; ++i)
         {
+            if (i >= playerAbilities.Count)
+            {
+                this.abilityCooldowns[i].fillImage.fillAmount = 0f;
+                continue;
+            }
             if (this.abilityCooldowns[i].callbackReference != null)
             {
                 (this.abilityCooldowns[i].callbackReference as PlayerAbility).DeregisterCooldownListener(this);
             }
-            this.abilityCooldowns[i].callbackReference = abilities[i];
-            abilities[i].RegisterCooldownListener(this, true);
+            this.abilityCooldowns[i].callbackReference = playerAbilities[i];
+            playerAbilities[i].RegisterCooldownListener(this, true);
         }
     }
 

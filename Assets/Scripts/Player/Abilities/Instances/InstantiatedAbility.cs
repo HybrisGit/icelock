@@ -3,10 +3,10 @@ using System.Collections;
 
 public class InstantiatedAbility : MonoBehaviour
 {
-    protected PlayerAbility source;
+    public PlayerAbility Source { get; private set; }
 
     public virtual void OnInstantiated(PlayerAbility source)
     {
-        this.source = source;
+        this.Source = source;
     }
 }
