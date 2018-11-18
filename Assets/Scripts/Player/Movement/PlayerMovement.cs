@@ -62,6 +62,10 @@ public class PlayerMovement : MonoBehaviour
                 {
                     this.player.GetComponent<Rigidbody>().AddForce(inputDir * movementLength * this.movementForce);
                 }
+                else
+                {
+                    movementLength = 0f;
+                }
 
                 float rotationLength = (inputLength - this.rotationDeadzone) / (1f - this.rotationDeadzone);
                 Vector3 dir = Vector3.RotateTowards(this.player.transform.forward, inputDir * rotationLength, this.rotationSpeed * inputLength, 0f);
