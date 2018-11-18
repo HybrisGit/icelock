@@ -2,12 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerAbilityManager : MonoBehaviour
+public class PlayerAbilityManager : MonoBehaviour, IRateListener
 {
     public Player player;
     [SerializeField] int maxAbilities = 4;
     private PlayerAbility[] abilities;
+    private PlayerCastAbility currentCastingAbility;
     private List<IEventListener> abilityChangeListeners = new List<IEventListener>();
+    private List<IRateListener> castTimeListeners = new List<IRateListener>();
 
     private void Awake()
     {
@@ -37,10 +39,12 @@ public class PlayerAbilityManager : MonoBehaviour
 
         if ((Input.GetButtonDown(inputButtonString) ||
             Input.GetButtonDown(inputKeyString)) &&
-            !this.abilities[abilityIndex].Pressed &&
-            this.abilities[abilityIndex].OffCooldown())
+            !this.abilities[abilityIndex].Pressed)
         {
-            this.abilities[abilityIndex].OnSuccessfulPress();
+            if (!this.abilities[abilityIndex].OnCooldown)
+            {
+                this.abilities[abilityIndex].OnSuccessfulPress();
+            }
         }
 
         if ((Input.GetButtonUp(inputButtonString) ||
@@ -67,6 +71,30 @@ public class PlayerAbilityManager : MonoBehaviour
         return false;
     }
 
+    public bool TryStartCast(PlayerCastAbility ability)
+    {
+        if (this.currentCastingAbility != null)
+        {
+            return false;
+        }
+        this.currentCastingAbility = ability;
+        ability.RegisterCastTimeListener(this, true);
+        this.castTimeListeners.ForEach((listener) => listener.OnRateChange(this, 0f));
+        return true;
+    }
+
+    public bool TryEndCast(PlayerCastAbility ability)
+    {
+        if (this.currentCastingAbility != ability)
+        {
+            return false;
+        }
+        this.currentCastingAbility = null;
+        ability.DeregisterCastTimeListener(this);
+        this.castTimeListeners.ForEach((listener) => listener.OnRateChange(this, 0f));
+        return true;
+    }
+
     public List<PlayerAbility> GetAbilities()
     {
         List<PlayerAbility> abilities = new List<PlayerAbility>();
@@ -80,7 +108,7 @@ public class PlayerAbilityManager : MonoBehaviour
         return abilities;
     }
 
-    public void RegisterAbilityListener(IEventListener listener, bool updateImmediately = true)
+    public void RegisterAbilityListener(IEventListener listener, bool updateImmediately = false)
     {
         this.abilityChangeListeners.Add(listener);
         if (updateImmediately)
@@ -92,5 +120,24 @@ public class PlayerAbilityManager : MonoBehaviour
     public void DeregisterAbilityListener(IEventListener listener)
     {
         this.abilityChangeListeners.Remove(listener);
+    }
+
+    public void RegisterCastTimeListener(IRateListener listener, bool updateImmediately = false)
+    {
+        this.castTimeListeners.Add(listener);
+        if (updateImmediately)
+        {
+            listener.OnRateChange(this, 0f);
+        }
+    }
+
+    public void DeregisterCastTimeListener(IRateListener listener)
+    {
+        this.castTimeListeners.Remove(listener);
+    }
+
+    public void OnRateChange(object caller, float rate)
+    {
+        this.castTimeListeners.ForEach((listener) => listener.OnRateChange(this, rate));
     }
 }

@@ -149,16 +149,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1640180421110316
+--- !u!1 &1443067489543826
 GameObject:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4805436186952664}
-  - component: {fileID: 114704116790267118}
-  - component: {fileID: 114004126399700934}
+  - component: {fileID: 4481364217660368}
+  - component: {fileID: 114398635399766938}
+  - component: {fileID: 114536108366278704}
+  - component: {fileID: 114055920290485518}
+  - component: {fileID: 114673673179094370}
   m_Layer: 8
   m_Name: ThrowSnowball
   m_TagString: Untagged
@@ -223,7 +225,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4805436186952664}
+  - {fileID: 4481364217660368}
   m_Father: {fileID: 4250118020897428}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -238,6 +240,19 @@ Transform:
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 4511257286958498}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4481364217660368
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1443067489543826}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4307236136322992}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4511257286958498
@@ -278,19 +293,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4928222671768834}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4805436186952664
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1640180421110316}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4307236136322992}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4818460692863484
@@ -421,20 +423,18 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &114004126399700934
+--- !u!114 &114055920290485518
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1640180421110316}
+  m_GameObject: {fileID: 1443067489543826}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ea6ecb1bc10cda449ceaadcc7ac6e7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 81d8e7fbcd89483429c03240846706af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability: {fileID: 114704116790267118}
-  manager: {fileID: 114583371032592334}
-  preferredIndex: 0
+  offset: {x: 0, y: 0, z: 1}
 --- !u!114 &114095900228546712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -474,6 +474,22 @@ MonoBehaviour:
   damageTakenPerSecond: 3
   submergedTrigger: {fileID: 114834119079281426}
   health: {fileID: 114419225335456760}
+--- !u!114 &114398635399766938
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1443067489543826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf420be3cfdfe11479bb191ec6dd9de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityManager: {fileID: 114583371032592334}
+  cooldownSeconds: 2
+  maxCastTime: 0.5
+  instantiatedAbility: {fileID: 114883642346853106, guid: b2cb37bd7d34fe745baf10220a165325,
+    type: 2}
 --- !u!114 &114419225335456760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -543,6 +559,20 @@ MonoBehaviour:
   playerAbilityManager: {fileID: 114583371032592334}
   playerHealth: {fileID: 114419225335456760}
   playerNumber: 1
+--- !u!114 &114536108366278704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1443067489543826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea6ecb1bc10cda449ceaadcc7ac6e7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 114398635399766938}
+  manager: {fileID: 114583371032592334}
+  preferredIndex: 0
 --- !u!114 &114583371032592334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -556,6 +586,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 114516944611114798}
   maxAbilities: 4
+--- !u!114 &114673673179094370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1443067489543826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5902ed5679ddae0458872c309cf0eeef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addedDirection: {x: 0, y: 0.1, z: 0}
+  impulse: 100
+  recoilEffect: 0.1
+  scaleWithCastTime: 1
+  maxEffectiveCastTime: 1
+  castTimeImpulseScaling:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114674514268524010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -567,22 +637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4477cd59e605f4f419b9a77baac4dedc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114704116790267118
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1640180421110316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf420be3cfdfe11479bb191ec6dd9de9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityManager: {fileID: 114583371032592334}
-  cooldownSeconds: 5
-  instantiatedAbility: {fileID: 114264084312068518, guid: b2cb37bd7d34fe745baf10220a165325,
-    type: 2}
-  offset: 1
 --- !u!114 &114733784077929550
 MonoBehaviour:
   m_ObjectHideFlags: 1

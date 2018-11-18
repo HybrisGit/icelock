@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4757266712041674}
   - component: {fileID: 114253800872734492}
   - component: {fileID: 114839017761870272}
+  - component: {fileID: 114645922916486422}
+  - component: {fileID: 114348719117167660}
   m_Layer: 8
   m_Name: ThrowSnowball
   m_TagString: Untagged
@@ -53,10 +55,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityManager: {fileID: 0}
-  cooldownSeconds: 5
-  instantiatedAbility: {fileID: 114264084312068518, guid: b2cb37bd7d34fe745baf10220a165325,
+  cooldownSeconds: 2
+  instantiatedAbility: {fileID: 114883642346853106, guid: b2cb37bd7d34fe745baf10220a165325,
     type: 2}
-  offset: 0.1
+--- !u!114 &114348719117167660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1237978432044154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5902ed5679ddae0458872c309cf0eeef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  addedDirection: {x: 0, y: 0.1, z: 0}
+  impulse: 100
+  recoilEffect: 0.1
+  scaleWithCastTime: 1
+  maxEffectiveCastTime: 1
+  castTimeImpulseScaling:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &114645922916486422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1237978432044154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d8e7fbcd89483429c03240846706af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 1}
 --- !u!114 &114839017761870272
 MonoBehaviour:
   m_ObjectHideFlags: 1

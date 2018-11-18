@@ -19,8 +19,23 @@ public abstract class PlayerAbility : MonoBehaviour
         }
     }
     private float _cooldownStartTime = float.MinValue;
-    private List<IRateListener> cooldownListeners = new List<IRateListener>();
-    public bool Pressed { get; private set; }
+    public bool Pressed
+    {
+        get
+        {
+            return this._pressed;
+        }
+        private set
+        {
+            if (this._pressed == value)
+            {
+                return;
+            }
+            this._pressed = value;
+        }
+    }
+    private bool _pressed = false;
+    public bool OnCooldown { get; private set; }
     public float RemainingCooldown
     {
         get
@@ -29,17 +44,28 @@ public abstract class PlayerAbility : MonoBehaviour
         }
         private set
         {
-            if (this.RemainingCooldown == value)
+            if (this._remainingCooldown == value)
             {
                 return;
             }
-            this._remainingCooldown = Mathf.Max(value, 0f);
-            this.cooldownListeners.ForEach((listener) => listener.OnRateChange(this, this.RemainingCooldown / this.cooldownSeconds));
+            if (value <= 0f)
+            {
+                this._remainingCooldown = 0f;
+                this.OnCooldown = false;
+            }
+            else
+            {
+                this._remainingCooldown = value;
+                this.OnCooldown = true;
+            }
+            this.cooldownListeners.ForEach((listener) => listener.OnRateChange(this, this._remainingCooldown / this.cooldownSeconds));
         }
     }
     private float _remainingCooldown = 0f;
 
-    private void Update()
+    private List<IRateListener> cooldownListeners = new List<IRateListener>();
+
+    protected virtual void Update()
     {
         this.RemainingCooldown = this.CooldownStartTime + this.cooldownSeconds - Time.time;
     }
@@ -57,16 +83,6 @@ public abstract class PlayerAbility : MonoBehaviour
     protected void StartCooldown()
     {
         this.CooldownStartTime = Time.time;
-    }
-
-    public bool OnCooldown()
-    {
-        return this.RemainingCooldown > 0f;
-    }
-
-    public bool OffCooldown()
-    {
-        return this.RemainingCooldown <= 0f;
     }
 
     public void RegisterCooldownListener(IRateListener listener, bool updateImmediately = false)

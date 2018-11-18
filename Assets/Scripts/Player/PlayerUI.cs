@@ -14,6 +14,7 @@ public class PlayerUI : MonoBehaviour, IRateListener, IEventListener
     }
 
     [SerializeField] ReferencedImage health;
+    [SerializeField] ReferencedImage castTime;
     [SerializeField] List<ReferencedImage> abilityCooldowns;
     [SerializeField] float heightOffset;
 
@@ -31,6 +32,9 @@ public class PlayerUI : MonoBehaviour, IRateListener, IEventListener
 
         this.health.callbackReference = this.player.playerHealth;
         this.player.playerHealth.RegisterHealthListener(this, true);
+
+        this.castTime.callbackReference = this.player.playerAbilityManager;
+        this.player.playerAbilityManager.RegisterCastTimeListener(this, true);
 
         this.player.playerAbilityManager.RegisterAbilityListener(this, true);
     }
@@ -56,18 +60,24 @@ public class PlayerUI : MonoBehaviour, IRateListener, IEventListener
 
     public void OnRateChange(object caller, float rate)
     {
-        Debug.Log("Rate change " + caller + " rate " + rate);
         if (caller == this.health.callbackReference)
         {
             this.health.fillImage.fillAmount = rate;
             return;
         }
 
+        if (caller == this.castTime.callbackReference)
+        {
+            this.castTime.fillImage.fillAmount = rate;
+            return;
+        }
+        
         for (int i = 0; i < this.abilityCooldowns.Count; ++i)
         {
             if (caller == this.abilityCooldowns[i].callbackReference)
             {
                 this.abilityCooldowns[i].fillImage.fillAmount = 1f - rate;
+                return;
             }
         }
     }

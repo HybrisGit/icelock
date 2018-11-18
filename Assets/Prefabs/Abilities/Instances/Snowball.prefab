@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4597467932385422}
   - component: {fileID: 54984839654794450}
-  - component: {fileID: 114264084312068518}
+  - component: {fileID: 114883642346853106}
   - component: {fileID: 114045449870562604}
   - component: {fileID: 114443588709301942}
   - component: {fileID: 114423907346938936}
@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1291062982260640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.412547, y: 1.42, z: -2.2031302}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4497297661450052}
@@ -144,21 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc1918f0a57b3fa41b990ecba876bd24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delaySeconds: 5
---- !u!114 &114264084312068518
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1291062982260640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c51544095ef0d394ba4ab1eeaf1e684e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  addedDirection: {x: 0, y: 0.1, z: 0}
-  impulse: 100
-  recoilEffect: 0.1
+  delaySeconds: 3
 --- !u!114 &114423907346938936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,6 +166,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 126fa791142e4764285fe08061e3adc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114883642346853106
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1291062982260640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1235d35a84d1dd1468a0664958a47004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &135911323326283472

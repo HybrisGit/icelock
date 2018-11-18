@@ -21,14 +21,6 @@ public class PlayerHeldAbility : PlayerAbility
         this.enabled = false;
     }
 
-    protected virtual void Update()
-    {
-        if (this.OffCooldown())
-        {
-            this.OnSuccessfulRelease();
-        }
-    }
-
     protected void StartDuration()
     {
         this.durationStartTime = Time.time;
