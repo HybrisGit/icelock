@@ -47,6 +47,7 @@ public class PullToAttachment : MonoBehaviour
             if (this.attachOnImpact.AttachedRigidbody != null)
             {
                 this.attachedRigidbody = this.attachOnImpact.AttachedRigidbody;
+                this.lineRenderer.SetColors(Color.black, Color.black);
             }
             else
             {
@@ -62,8 +63,7 @@ public class PullToAttachment : MonoBehaviour
             return; 
         }
         Vector3 casterToAttachmentDir = casterToAttachment / distance;
-
-        Debug.Log("Pull at " + this.casterRigidbody + " and " + this.attachedRigidbody);
+        
         this.casterRigidbody.AddForce(casterToAttachmentDir * this.pullForce * this.casterPullShare, ForceMode.Force);
         this.attachedRigidbody.AddForce(casterToAttachmentDir * -1f * this.pullForce * (1f - this.casterPullShare), ForceMode.Force);
     }

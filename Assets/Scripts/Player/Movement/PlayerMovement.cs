@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour
                 movementLength = (inputLength - this.movementDeadzone) / (1f - this.movementDeadzone);
                 if (movementLength > 0f)
                 {
-                    this.player.GetComponent<Rigidbody>().AddForce(inputDir * movementLength * this.movementForce);
+                    this.player.GetRigidbody().AddForce(inputDir * movementLength * this.movementForce);
                 }
                 else
                 {
@@ -82,8 +82,8 @@ public class PlayerMovement : MonoBehaviour
         {
             this.positionState = state;
             //Debug.Log("Set state to " + state);
-            this.movementForce = this.stateSettings[state].force * this.player.GetComponent<Rigidbody>().mass;
-            this.player.GetComponent<Rigidbody>().drag = this.stateSettings[state].drag;
+            this.movementForce = this.stateSettings[state].force * this.player.GetRigidbody().mass;
+            this.player.GetRigidbody().drag = this.stateSettings[state].drag;
         }
     }
 
