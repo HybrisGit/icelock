@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     public Player player;
+    public Animator animationController;
     public float rotationDeadzone;
     public float movementDeadzone;
     public float rotationSpeed;
