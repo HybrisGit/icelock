@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     public Player player;
+    public Animator animationController;
     public float rotationDeadzone;
     public float movementDeadzone;
     public float rotationSpeed;
@@ -52,10 +53,11 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 inputVector = new Vector3(horizontalAxis, 0f, verticalAxis);
             float inputLength = inputVector.magnitude;
+            float movementLength = 0f;
             if (inputLength > this.rotationDeadzone)
             {
                 Vector3 inputDir = inputVector / inputLength;
-                float movementLength = (inputLength - this.movementDeadzone) / (1f - this.movementDeadzone);
+                movementLength = (inputLength - this.movementDeadzone) / (1f - this.movementDeadzone);
                 if (movementLength > 0f)
                 {
                     this.player.GetComponent<Rigidbody>().AddForce(inputDir * movementLength * this.movementForce);
@@ -66,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
                 this.player.transform.rotation = Quaternion.LookRotation(dir);
             }
+            this.animationController.SetFloat("Speed", movementLength);
         }
     }
 
